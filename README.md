@@ -3,6 +3,9 @@
 Landing page single-page para estética automotiva premium (marca fictícia).
 Stack: React + Vite + Tailwind 3 + Framer Motion.
 
+**Site no ar:** https://richarddias131-cloud.github.io/black-detail-studio/
+(publicado automaticamente pelo GitHub Actions a cada push na `main` — ver `.github/workflows/deploy.yml`)
+
 ```bash
 npm install
 npm run dev       # desenvolvimento
