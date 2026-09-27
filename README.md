@@ -3,7 +3,7 @@
 Landing page single-page para estética automotiva premium (marca fictícia).
 Stack: React + Vite + Tailwind 3 + Framer Motion.
 
-**Site no ar:** https://richarddias131-cloud.github.io/black-detail-studio/
+**Site no ar:** https://estetica.cresbi.com.br (domínio próprio via GitHub Pages; o CNAME `estetica` aponta para `richarddias131-cloud.github.io`)
 (publicado automaticamente pelo GitHub Actions a cada push na `main` — ver `.github/workflows/deploy.yml`)
 
 ```bash
