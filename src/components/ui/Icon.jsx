@@ -106,6 +106,20 @@ const PATHS = {
   arrowLeft: <path d="M19.5 12h-15m5.5-5.5L4.5 12l5.5 5.5" />,
   arrowDown: <path d="M12 4.5v15m-5.5-5.5 5.5 5.5 5.5-5.5" />,
   check: <path d="m5 12.5 4.5 4.5L19 7.5" />,
+  navigate: <path d="M3.8 10.9 20.2 3.8l-7.1 16.4-2-7.2-7.3-2.1Z" />,
+  route: (
+    <>
+      <circle cx="6" cy="18" r="2.2" />
+      <path d="M18 9.5s3.2-2.9 3.2-5.3a3.2 3.2 0 0 0-6.4 0c0 2.4 3.2 5.3 3.2 5.3Z" />
+      <path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h3.5" strokeDasharray="2 2.2" />
+    </>
+  ),
+  parking: (
+    <>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+      <path d="M10 16.5v-9h3a2.8 2.8 0 0 1 0 5.6h-3" />
+    </>
+  ),
   drag: <path d="M9 7.5 4.5 12 9 16.5M15 7.5l4.5 4.5-4.5 4.5" />,
 }
 

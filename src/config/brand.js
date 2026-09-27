@@ -32,9 +32,15 @@ export const brand = {
   instagramHandle: '@blackdetailstudio', // TROCAR
   googleReviewsUrl: 'https://maps.google.com', // TROCAR: link do perfil no Google
   address: {
-    line1: 'Rua Exemplo, 1000 — Jardins', // TROCAR
-    line2: 'São Paulo · SP · 01400-000', // TROCAR
-    mapsUrl: 'https://maps.google.com', // TROCAR
+    line1: 'Alameda Lorena — Jardins', // TROCAR: endereço exibido no site
+    line2: 'São Paulo · SP', // TROCAR
+    // TROCAR: o que o Google Maps/Waze vão procurar. Use o endereço completo com número,
+    // ou o nome exato da empresa no Google (ex.: 'Black Detail Studio, São Paulo').
+    // Para precisão total, preencha lat/lng (clique com o botão direito no Google Maps → copie as coordenadas).
+    mapQuery: 'Alameda Lorena, Jardins, São Paulo - SP',
+    lat: null,
+    lng: null,
+    parking: 'Estacionamento no local para clientes', // opcional: '' para esconder
   },
   hours: [
     // TROCAR horário

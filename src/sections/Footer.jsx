@@ -1,4 +1,5 @@
 import { brand } from '../config/brand'
+import { directionsUrl } from '../lib/maps'
 import { whatsappUrl } from '../lib/whatsapp'
 import Icon from '../components/ui/Icon'
 import Logo from '../components/ui/Logo'
@@ -43,7 +44,7 @@ export default function Footer() {
               {brand.address.line2}
             </address>
             <a
-              href={brand.address.mapsUrl}
+              href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 text-micro font-semibold uppercase tracking-[0.2em] text-accent hover:text-accent-soft"

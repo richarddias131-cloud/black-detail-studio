@@ -13,6 +13,7 @@ const SECTIONS = [
   ['numeros', 'Números'],
   ['pacotes', 'Pacotes'],
   ['agendar', 'Agendar'],
+  ['localizacao', 'Localização'],
 ]
 
 export default function ScrollChrome() {

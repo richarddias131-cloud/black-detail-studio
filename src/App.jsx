@@ -7,6 +7,7 @@ import BeforeAfter from './sections/BeforeAfter'
 import FinalCta from './sections/FinalCta'
 import Footer from './sections/Footer'
 import Hero from './sections/Hero'
+import Location from './sections/Location'
 import Packages from './sections/Packages'
 import Services from './sections/Services'
 import Stats from './sections/Stats'
@@ -32,6 +33,7 @@ export default function App() {
           <Stats />
           <Packages />
           <FinalCta />
+          <Location />
         </main>
         <Footer />
         <WhatsAppFloat />
