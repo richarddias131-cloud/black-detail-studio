@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- TROCAR SEO: título, descrição e cor do navegador por cliente -->
+    <title>Black Detail Studio — Estética Automotiva de Alto Padrão em São Paulo</title>
+    <meta
+      name="description"
+      content="Vitrificação cerâmica, PPF, polimento técnico e higienização interna com garantia por escrito. Estética automotiva premium em São Paulo — agende pelo WhatsApp."
+    />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta property="og:title" content="Black Detail Studio — Estética Automotiva de Alto Padrão" />
+    <meta property="og:description" content="Seu carro merece mais que uma lavagem. Vitrificação, PPF e polimento técnico em São Paulo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&h=630&q=70" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fontes são hospedadas localmente (ver src/main.jsx). Fotos vêm do Unsplash: -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Preload da foto do Hero (maior elemento da primeira tela). TROCAR junto com brand.hero.image -->
+    <link
+      rel="preload"
+      as="image"
+      fetchpriority="high"
+      imagesrcset="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=480&q=72 480w, https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=768&q=72 768w, https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1080&q=72 1080w, https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1440&q=72 1440w, https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1920&q=72 1920w"
+      imagesizes="100vw"
+    />
+    <style>
+      /* Evita flash branco antes do CSS carregar */
+      html, body { background: #0a0a0a; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
