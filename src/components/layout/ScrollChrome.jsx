@@ -3,16 +3,17 @@ import { useEffect, useState } from 'react'
 
 // Navegação sem menu: barra de progresso no topo + pontos de âncora na lateral (desktop).
 // TROCAR/ADICIONAR SEÇÕES: mantenha esta lista igual aos ids das <section> no App.
+// Seções que não estiverem na página (ex.: sem depoimentos) não aparecem.
 const SECTIONS = [
   ['inicio', 'Início'],
-  ['sobre', 'O estúdio'],
-  ['servicos', 'Serviços'],
   ['resultados', 'Antes e depois'],
+  ['servicos', 'Serviços'],
+  ['sobre', 'A empresa'],
   ['diferenciais', 'Diferenciais'],
   ['depoimentos', 'Depoimentos'],
   ['numeros', 'Números'],
   ['pacotes', 'Pacotes'],
-  ['agendar', 'Agendar'],
+  ['agendar', 'Orçamento'],
   ['localizacao', 'Localização'],
 ]
 
@@ -20,16 +21,16 @@ export default function ScrollChrome() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
   const [active, setActive] = useState('inicio')
+  const [present, setPresent] = useState([])
 
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
     )
-    SECTIONS.forEach(([id]) => {
-      const el = document.getElementById(id)
-      if (el) io.observe(el)
-    })
+    const found = SECTIONS.filter(([id]) => document.getElementById(id))
+    found.forEach(([id]) => io.observe(document.getElementById(id)))
+    setPresent(found)
     return () => io.disconnect()
   }, [])
 
@@ -39,7 +40,7 @@ export default function ScrollChrome() {
 
       <nav aria-label="Seções" className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
         <ul className="flex flex-col gap-4">
-          {SECTIONS.map(([id, label]) => {
+          {present.map(([id, label]) => {
             const on = active === id
             return (
               <li key={id}>

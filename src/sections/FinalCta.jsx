@@ -46,7 +46,7 @@ export default function FinalCta() {
         <div className="shell text-center">
           <Reveal className="flex items-center justify-center gap-4">
             <span className="rule-accent" />
-            <span className="eyebrow text-bone/80">Vagas limitadas por semana</span>
+            <span className="eyebrow text-bone/80">{finalCta.eyebrow}</span>
             <span className="rule-accent" />
           </Reveal>
 

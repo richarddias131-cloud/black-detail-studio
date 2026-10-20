@@ -20,7 +20,7 @@ function MapPin() {
       <span className="absolute -bottom-2 left-1/2 h-4 w-10 -translate-x-1/2 animate-ping rounded-[50%] bg-accent/40 motion-reduce:hidden" />
       <svg width="44" height="56" viewBox="0 0 44 56" className="relative drop-shadow-[0_8px_16px_rgb(var(--c-accent)/0.6)]">
         <path d="M22 55S3 34.6 3 21a19 19 0 0 1 38 0c0 13.6-19 34-19 34Z" fill="rgb(var(--c-accent))" />
-        <rect x="15" y="14" width="14" height="14" transform="rotate(45 22 21)" fill="none" stroke="rgb(var(--c-bone))" strokeWidth="1.6" />
+        <rect x="15" y="14" width="14" height="14" transform="rotate(45 22 21)" fill="none" stroke="rgb(var(--c-on-accent))" strokeWidth="1.6" />
       </svg>
     </span>
   )
@@ -33,7 +33,7 @@ export default function Location() {
       <div className="shell grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         {/* ── Informações + botões de rota ───────────────────────────────── */}
         <div>
-          <SectionHeading eyebrow="Localização" title={['Venha conhecer', 'o estúdio']} accentLast size="md" />
+          <SectionHeading eyebrow="Localização" title={['Como', 'chegar']} accentLast size="md" />
 
           <Reveal delay={0.1} className="mt-10 space-y-5">
             <div className="flex gap-4">
@@ -79,9 +79,9 @@ export default function Location() {
             </Button>
           </Reveal>
           <Reveal delay={0.25} as="p" className="mt-5 text-small text-smoke">
-            Atendimento com hora marcada.{' '}
+            Dúvidas antes de vir?{' '}
             <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="font-semibold text-bone/80 underline decoration-accent underline-offset-4 hover:text-accent">
-              Agende antes pelo WhatsApp
+              Chame no WhatsApp {brand.whatsapp.display}
             </a>
           </Reveal>
         </div>
@@ -116,10 +116,10 @@ export default function Location() {
             className="shine group absolute left-4 right-4 top-4 flex items-center justify-between gap-4 rounded-2xl border border-bone/10 bg-ink/85 px-5 py-4 backdrop-blur-md transition-colors duration-300 hover:border-accent/50 sm:left-6 sm:right-auto sm:top-6"
           >
             <span>
-              <span className="block text-micro font-semibold uppercase tracking-[0.2em] text-accent">{brand.name} {brand.nameSuffix}</span>
+              <span className="block text-micro font-semibold uppercase tracking-[0.2em] text-accent">{brand.name}</span>
               <span className="mt-1 block text-small text-bone">{address.line1}</span>
             </span>
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent text-bone transition-transform duration-300 ease-silk group-hover:rotate-12">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 ease-silk group-hover:rotate-12">
               <Icon name="navigate" size={18} stroke={1.6} />
             </span>
           </a>

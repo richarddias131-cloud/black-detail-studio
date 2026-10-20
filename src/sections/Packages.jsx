@@ -21,7 +21,7 @@ function PackageCard({ pkg, index }) {
       }`}
     >
       {featured && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-4 py-1.5 text-micro font-semibold uppercase tracking-[0.22em] text-bone shadow-glow-sm">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-4 py-1.5 text-micro font-semibold uppercase tracking-[0.22em] text-on-accent shadow-glow-sm">
           Mais escolhido
         </span>
       )}

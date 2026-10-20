@@ -92,7 +92,7 @@ export default function CompareSlider({ pair }) {
       <span className="pointer-events-none absolute left-5 top-5 rounded-full border border-bone/15 bg-ink/60 px-4 py-2 text-micro font-semibold uppercase tracking-[0.22em] text-bone/80 backdrop-blur-md">
         Antes
       </span>
-      <span className="pointer-events-none absolute right-5 top-5 rounded-full bg-accent px-4 py-2 text-micro font-semibold uppercase tracking-[0.22em] text-bone">
+      <span className="pointer-events-none absolute right-5 top-5 rounded-full bg-accent px-4 py-2 text-micro font-semibold uppercase tracking-[0.22em] text-on-accent">
         Depois
       </span>
 

@@ -32,7 +32,7 @@ export default function WhyUs() {
   return (
     <section id="diferenciais" className="tex-brushed relative border-y border-bone/[0.06] py-24 sm:py-32">
       <div className="shell">
-        <SectionHeading align="center" eyebrow="Por que nos escolher" title={['Compromisso em', 'cada detalhe']} accentLast />
+        <SectionHeading align="center" eyebrow="Por que nos escolher" title={['Por que a', brand.name]} accentLast />
 
         <RevealGroup step={0.1} className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
           {brand.whyUs.map((item) => (

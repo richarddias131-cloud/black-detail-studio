@@ -23,20 +23,21 @@ export default function Hero() {
   return (
     <section ref={ref} id="inicio" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink">
       {/* ── Fundo (foto ou vídeo) com parallax ─────────────────────────────── */}
-      <m.div aria-hidden="true" style={{ y: bgY, scale: bgScale }} className="absolute inset-0 -z-10 will-change-transform">
+      {/* Foto vertical do cliente: tela cheia no celular, metade direita no desktop (evita ampliar demais) */}
+      <m.div aria-hidden="true" style={{ y: bgY, scale: bgScale }} className="absolute inset-0 -z-10 will-change-transform lg:left-[38%] lg:[-webkit-mask-image:linear-gradient(to_right,transparent,#000_40%)] lg:[mask-image:linear-gradient(to_right,transparent,#000_40%)]">
         {hero.video ? (
           <video className="h-full w-full object-cover" autoPlay muted loop playsInline preload="metadata">
             <source src={hero.video} type="video/mp4" />
           </video>
         ) : (
-          <Img src={hero.image} alt="" priority sizes="100vw" className="h-full w-full object-cover object-[62%_50%]" />
+          <Img src={hero.image} alt="" priority sizes="100vw" width={936} height={1128} className="h-full w-full object-cover object-[50%_60%]" />
         )}
       </m.div>
 
       {/* Camadas de tratamento da imagem: escurece, dá leitura ao texto e integra com a próxima seção */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/75 to-ink/20" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/30 to-ink/60" />
-      <div aria-hidden="true" className="absolute -bottom-40 -left-40 -z-10 h-[34rem] w-[34rem] rounded-full bg-accent/20 blur-[120px]" />
+      <div aria-hidden="true" className="absolute -bottom-40 -left-40 -z-10 h-[34rem] w-[34rem] rounded-full bg-accent/10 blur-[120px]" />
 
       {/* ── Topo: logotipo ─────────────────────────────────────────────────── */}
       <m.header
@@ -45,7 +46,7 @@ export default function Hero() {
         transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         className="shell flex items-center justify-between pt-6 sm:pt-8"
       >
-        <a href="#inicio">
+        <a href="#inicio" aria-label={`${brand.name} ${brand.nameSuffix}, início`}>
           <Logo />
         </a>
         <span className="eyebrow hidden items-center gap-3 sm:flex">
@@ -122,7 +123,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="group flex items-center gap-4 rounded-2xl border border-bone/10 bg-ink/40 px-5 py-4 backdrop-blur-md transition-colors duration-300 hover:border-bone/25"
             >
-              <span className="font-display text-[2.4rem] leading-none text-bone">{google.rating.toLocaleString('pt-BR')}</span>
+              <span className="font-display text-[2.4rem] leading-none text-bone">{google.rating.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}</span>
               <span>
                 <span className="flex gap-0.5 text-accent">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -132,7 +133,7 @@ export default function Hero() {
                 <span className="mt-1 block text-micro text-mist">{google.count} avaliações no Google</span>
               </span>
             </a>
-            <a href="#sobre" aria-label="Rolar para a próxima seção" className="hidden flex-col items-center gap-3 text-mist lg:flex">
+            <a href="#resultados" aria-label="Rolar para a próxima seção" className="hidden flex-col items-center gap-3 text-mist lg:flex">
               <span className="eyebrow [writing-mode:vertical-rl]">Role</span>
               <span className="relative h-14 w-px overflow-hidden bg-bone/15">
                 <m.span
