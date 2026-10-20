@@ -6,6 +6,9 @@ Stack: React + Vite + Tailwind 3 + Framer Motion.
 
 Pendências do cliente: procure por `A CONFIRMAR` no código (aparecem visíveis no site).
 
+**Página de links (bio)** para Instagram e Google: `bio.html` → https://estetica.cresbi.com.br/bio.html
+(componente em `src/bio/Bio.jsx`, usa os mesmos dados de `src/config/brand.js`).
+
 **Site no ar:** https://estetica.cresbi.com.br (domínio próprio via GitHub Pages; o CNAME `estetica` aponta para `richarddias131-cloud.github.io`)
 (publicado automaticamente pelo GitHub Actions a cada push na `main` — ver `.github/workflows/deploy.yml`)
 
