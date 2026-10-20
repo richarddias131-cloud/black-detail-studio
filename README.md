@@ -1,7 +1,10 @@
-# Black Detail Studio — bio site de portfólio
+# Lustroprime Estética Automotiva — site
 
-Landing page single-page para estética automotiva premium (marca fictícia).
+Landing page single-page da Lustroprime Estética Automotiva (R. Carlos Gomes, 678 — Santo Amaro, São Paulo/SP),
+adaptada do modelo de estética automotiva (antes com a marca fictícia "Black Detail Studio").
 Stack: React + Vite + Tailwind 3 + Framer Motion.
+
+Pendências do cliente: procure por `A CONFIRMAR` no código (aparecem visíveis no site).
 
 **Site no ar:** https://estetica.cresbi.com.br (domínio próprio via GitHub Pages; o CNAME `estetica` aponta para `richarddias131-cloud.github.io`)
 (publicado automaticamente pelo GitHub Actions a cada push na `main` — ver `.github/workflows/deploy.yml`)

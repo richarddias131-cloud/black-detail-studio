@@ -1,7 +1,7 @@
 import { m, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-// Cursor leve: ponto vermelho + anel que cresce sobre elementos clicáveis.
+// Cursor leve: ponto na cor de destaque (TROCAR a cor do anel abaixo junto com --c-accent) + anel que cresce sobre elementos clicáveis.
 // Só ativa com mouse (pointer: fine) e sem "reduzir movimento". Para desligar: remova <CustomCursor /> do App.
 const INTERACTIVE = 'a, button, [role="slider"], [role="tab"]'
 
@@ -46,7 +46,7 @@ export default function CustomCursor() {
       <m.div
         className="absolute left-0 top-0 rounded-full border border-bone/60 mix-blend-difference"
         style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
-        animate={{ width: hover ? 56 : 32, height: hover ? 56 : 32, borderColor: hover ? 'rgb(225 6 0 / 0.9)' : 'rgb(242 242 242 / 0.6)' }}
+        animate={{ width: hover ? 56 : 32, height: hover ? 56 : 32, borderColor: hover ? 'rgb(245 197 24 / 0.9)' : 'rgb(242 242 242 / 0.6)' }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       />
       <m.div

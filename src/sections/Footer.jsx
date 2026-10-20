@@ -26,9 +26,9 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-6 max-w-xs text-small text-mist">Estética automotiva de alto padrão em {brand.city}. Tratamento sob agendamento.</p>
+            <p className="mt-6 max-w-xs text-small text-mist">Estética automotiva em {brand.city}.</p>
             <div className="mt-8 flex gap-3">
-              <Social href={brand.instagram} icon="instagram" label="Instagram" />
+              {brand.instagram && <Social href={brand.instagram} icon="instagram" label="Instagram" />}
               <Social href={whatsappUrl()} icon="whatsapp" label="WhatsApp" />
               <Social href={brand.googleReviewsUrl} icon="star" label="Avaliações no Google" />
             </div>
@@ -61,7 +61,7 @@ export default function Footer() {
               {brand.hours.map((h) => (
                 <div key={h.days} className="flex justify-between gap-4 border-b border-bone/[0.06] pb-2">
                   <dt className="text-mist">{h.days}</dt>
-                  <dd className="text-bone/85">{h.time}</dd>
+                  <dd className="whitespace-nowrap text-bone/85">{h.time}</dd>
                 </div>
               ))}
             </dl>
@@ -72,11 +72,15 @@ export default function Footer() {
               <Icon name="whatsapp" size={16} className="text-accent" /> Contato
             </h3>
             <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="mt-5 block text-small text-bone/85 hover:text-accent">
-              WhatsApp · agendamentos
+              WhatsApp {brand.whatsapp.display}
             </a>
-            <a href={brand.instagram} target="_blank" rel="noopener noreferrer" className="mt-2 block text-small text-bone/85 hover:text-accent">
-              {brand.instagramHandle}
-            </a>
+            {brand.instagram ? (
+              <a href={brand.instagram} target="_blank" rel="noopener noreferrer" className="mt-2 block text-small text-bone/85 hover:text-accent">
+                {brand.instagramHandle}
+              </a>
+            ) : (
+              <p className="mt-2 text-small text-mist">Instagram [A CONFIRMAR]</p>
+            )}
           </div>
         </div>
 
@@ -84,7 +88,7 @@ export default function Footer() {
           <p>
             © {year} {brand.name} {brand.nameSuffix}. Todos os direitos reservados.
           </p>
-          <a href={brand.credit.url} className="uppercase tracking-[0.2em] hover:text-bone">
+          <a href={brand.credit.url} target="_blank" rel="noopener noreferrer" className="uppercase tracking-[0.2em] hover:text-bone">
             {brand.credit.label}
           </a>
         </div>

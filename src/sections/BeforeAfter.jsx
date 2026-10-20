@@ -3,12 +3,52 @@ import { useState } from 'react'
 import { brand } from '../config/brand'
 import { EASE } from '../lib/motion'
 import CompareSlider from '../components/ui/CompareSlider'
+import Img from '../components/ui/Img'
 import Reveal from '../components/ui/Reveal'
 import SectionHeading from '../components/ui/SectionHeading'
+
+const TAG = 'pointer-events-none absolute left-4 top-4 rounded-full px-4 py-2 text-micro font-semibold uppercase tracking-[0.22em] sm:left-5 sm:top-5'
+const TAG_BEFORE = `${TAG} border border-bone/15 bg-ink/60 text-bone/80 backdrop-blur-md`
+const TAG_AFTER = `${TAG} bg-accent text-on-accent`
+
+// Antes e depois em fotos separadas (ângulos diferentes): lado a lado, sem divisória.
+function SideBySide({ pair }) {
+  return (
+    <div className="grid grid-cols-2 gap-2 sm:gap-3">
+      {[
+        [pair.before, pair.beforeLabel ?? 'Antes', TAG_BEFORE],
+        [pair.after, pair.afterLabel ?? 'Depois', TAG_AFTER],
+      ].map(([src, label, tag]) => (
+        <figure key={label} className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-graphite sm:rounded-[1.75rem] lg:aspect-[5/6]">
+          <Img src={src} alt={`${pair.label}, ${pair.car}: ${label.toLowerCase()}`} sizes="(min-width: 1280px) 600px, 50vw" width={936} height={1128} className="absolute inset-0 h-full w-full object-cover" />
+          <figcaption className={tag}>{label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )
+}
+
+// Uma foto que já mostra o antes e o depois (ex.: metade polida, metade não).
+function Single({ pair }) {
+  return (
+    <figure className="relative overflow-hidden rounded-[1.75rem] bg-graphite">
+      <Img src={pair.single} alt={`${pair.label}: ${pair.caption}`} sizes="(min-width: 1280px) 1200px, 100vw" width={936} height={882} className="aspect-[4/5] w-full object-cover sm:aspect-[16/9]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent" />
+      <figcaption className="absolute inset-x-5 bottom-5 text-small font-semibold text-bone sm:inset-x-8 sm:bottom-7 sm:text-body-lg">{pair.caption}</figcaption>
+    </figure>
+  )
+}
+
+function PairView({ pair }) {
+  if (pair.single) return <Single pair={pair} />
+  if (pair.sideBySide) return <SideBySide pair={pair} />
+  return <CompareSlider pair={pair} />
+}
 
 export default function BeforeAfter() {
   const pairs = brand.beforeAfter
   const [active, setActive] = useState(0)
+  const hasSlider = pairs.some((p) => !p.single && !p.sideBySide)
 
   return (
     <section id="resultados" className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
@@ -17,7 +57,10 @@ export default function BeforeAfter() {
       <div className="shell">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow="Antes e depois" title={['O resultado', 'fala por si']} accentLast />
-          <p className="max-w-sm text-body text-mist lg:pb-3">Arraste a divisória para comparar. Mesmo carro, mesmo ângulo, antes e depois do tratamento.</p>
+          <p className="max-w-sm text-body text-mist lg:pb-3">
+            Trabalhos reais da {brand.name}. Escolha abaixo qual serviço ver.
+            {hasSlider && ' Nas fotos com divisória, arraste para comparar.'}
+          </p>
         </div>
 
         <Reveal className="mt-14 lg:mt-20">
@@ -30,7 +73,7 @@ export default function BeforeAfter() {
                 exit={{ opacity: 0, scale: 0.995 }}
                 transition={{ duration: 0.5, ease: EASE }}
               >
-                <CompareSlider pair={pairs[active]} />
+                <PairView pair={pairs[active]} />
               </m.div>
             </AnimatePresence>
           </div>
@@ -42,7 +85,7 @@ export default function BeforeAfter() {
             const on = i === active
             return (
               <button
-                key={p.car}
+                key={p.label}
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActive(i)}

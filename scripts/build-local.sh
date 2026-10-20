@@ -10,7 +10,8 @@ VITE_LOCAL_IMAGES=1 npx vite build --base ./ --outDir "$OUT" --emptyOutDir
 
 mkdir -p "$OUT/img"
 # Todos os ids usados via u('...') no projeto
-IDS=$(grep -rhoE "u\('[0-9a-f-]+'\)" src | sed -E "s/u\('([^']+)'\)/\1/" | sort -u)
+# (|| true: com fotos só locais não há nenhum id, e o grep sem resultado derrubaria o script)
+IDS=$(grep -rhoE "u\('[0-9a-f-]+'\)" src | sed -E "s/u\('([^']+)'\)/\1/" | sort -u || true)
 for id in $IDS; do
   for w in 768 1440 1920; do
     f="$OUT/img/$id-$w.jpg"

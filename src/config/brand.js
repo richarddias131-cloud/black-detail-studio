@@ -8,231 +8,158 @@
 //   • Fontes ........... tailwind.config.js (fontFamily) + <link> no index.html
 //   • Logo em arquivo .. coloque em /public e aponte em brand.logo abaixo
 //   • <title>/SEO ...... index.html (e o preload da foto do Hero)
+//
+//  REGRA: nada de dado inventado. O que o cliente ainda não confirmou fica com
+//  o marcador [A CONFIRMAR] visível no site (procure por "A CONFIRMAR").
 // ═════════════════════════════════════════════════════════════════════════════
 
 // Helper de imagens do Unsplash — gera URL otimizada no tamanho pedido.
-// TROCAR FOTOS: quando o cliente tiver fotos próprias, use caminhos locais
-// (ex.: '/fotos/hero.jpg') no lugar de u('...') — o componente <Img> aceita os dois.
+// Não usar foto de banco de imagens como se fosse trabalho do cliente:
+// para fotos próprias, use caminhos locais (ex.: 'fotos/hero.webp') — o <Img> aceita os dois.
 export const u = (id) => ({ unsplash: id })
+
+// Fotos do cliente (recortadas do catálogo do WhatsApp) — ficam em public/fotos
+const foto = (name) => `fotos/${name}.webp`
 
 export const brand = {
   // ── Identidade ────────────────────────────────────────────────────────────
-  name: 'BLACK DETAIL', // TROCAR NOME: parte principal do logotipo
-  nameSuffix: 'STUDIO', // TROCAR NOME: complemento (fica em vermelho). Use '' se não houver
-  logo: null, // TROCAR LOGO: ex. '/logo.svg'. Se null, o logotipo é gerado em texto
-  city: 'São Paulo · SP',
-  since: 2018,
+  name: 'Lustroprime',
+  nameSuffix: 'Estética Automotiva',
+  logo: 'logo-lustroprime.webp', // recortado do print do logo — [A CONFIRMAR] pedir o arquivo original em alta
+  logoSize: [360, 122],
+  city: 'Santo Amaro · São Paulo',
+  since: null, // ano de fundação: [A CONFIRMAR] (null esconde a marca d'água)
 
   // ── Contato ───────────────────────────────────────────────────────────────
   whatsapp: {
-    number: '5511900000000', // TROCAR: DDI + DDD + número, só dígitos
-    message: 'Olá! Vim pelo site e quero agendar uma avaliação do meu carro.',
+    number: '5511978479285',
+    display: '(11) 97847-9285',
+    message: 'Olá! Vi o site e quero um orçamento.',
   },
-  instagram: 'https://instagram.com/blackdetailstudio', // TROCAR
-  instagramHandle: '@blackdetailstudio', // TROCAR
-  googleReviewsUrl: 'https://maps.google.com', // TROCAR: link do perfil no Google
+  instagram: null, // [A CONFIRMAR] ex.: 'https://instagram.com/...'
+  instagramHandle: null,
+  // [A CONFIRMAR] link direto do perfil no Google; por enquanto, busca pelo nome no Maps
+  googleReviewsUrl: 'https://www.google.com/maps/search/?api=1&query=Lustroprime%20Est%C3%A9tica%20Automotiva%20Santo%20Amaro',
   address: {
-    line1: 'Alameda Lorena — Jardins', // TROCAR: endereço exibido no site
-    line2: 'São Paulo · SP', // TROCAR
-    // TROCAR: o que o Google Maps/Waze vão procurar. Use o endereço completo com número,
-    // ou o nome exato da empresa no Google (ex.: 'Black Detail Studio, São Paulo').
-    // Para precisão total, preencha lat/lng (clique com o botão direito no Google Maps → copie as coordenadas).
-    mapQuery: 'Alameda Lorena, Jardins, São Paulo - SP',
+    line1: 'R. Carlos Gomes, 678',
+    line2: 'Santo Amaro · São Paulo/SP',
+    mapQuery: 'R. Carlos Gomes, 678 - Santo Amaro, São Paulo - SP',
     lat: null,
     lng: null,
-    parking: 'Estacionamento no local para clientes', // opcional: '' para esconder
+    parking: '', // [A CONFIRMAR] tem estacionamento para clientes?
   },
-  hours: [
-    // TROCAR horário
-    { days: 'Segunda a sexta', time: '08h — 18h' },
-    { days: 'Sábado', time: '08h — 14h' },
-    { days: 'Domingo', time: 'Fechado' },
-  ],
-  credit: { label: 'Site por AgilizeWeb', url: '#' }, // assinatura da agência no rodapé
+  hours: [{ days: 'Todos os dias [A CONFIRMAR os dias]', time: '9h — 19h' }],
+  credit: { label: 'Site feito pela CRESBI', url: 'https://cresbi.com.br' },
 
   // ── 1. Hero ───────────────────────────────────────────────────────────────
   hero: {
-    eyebrow: 'Estética automotiva de alto padrão',
-    // Cada item vira uma linha do título; { accent: true } pinta de vermelho
-    title: [{ text: 'Seu carro' }, { text: 'merece mais que' }, { text: 'uma lavagem.', accent: true }],
-    subtitle:
-      'Vitrificação cerâmica, PPF e polimento técnico para quem trata o carro como investimento — com processo documentado, produtos importados e garantia por escrito.',
-    image: u('1607860108855-64acf2078ed9'), // TROCAR FOTO do Hero (também no preload do index.html)
-    imageAlt: 'Detalhista aplicando espuma em um carro esportivo preto',
-    // video: '/hero.mp4', // OPCIONAL: vídeo de fundo (mp4 leve, sem áudio). Se definido, substitui a foto
-    primaryCta: 'Fale no WhatsApp',
+    eyebrow: 'Estética automotiva em Santo Amaro',
+    // Cada item vira uma linha do título; { accent: true } pinta com a cor de destaque
+    title: [{ text: 'Seu carro com' }, { text: 'cara de novo,' }, { text: 'em Santo Amaro', accent: true }],
+    subtitle: 'Lavagem, polimento, vitrificação e higienização com cuidado de detalhe.',
+    image: foto('tiggo-after'), // TROCAR junto com o preload do index.html
+    imageAlt: 'Chery Tiggo 7 Pro azul-escuro com a pintura brilhando depois do polimento',
+    primaryCta: 'Pedir orçamento no WhatsApp',
     secondaryCta: 'Ver serviços',
   },
 
-  // ── 2. Sobre / Autoridade ─────────────────────────────────────────────────
+  // ── 2. Sobre ──────────────────────────────────────────────────────────────
   about: {
-    eyebrow: 'O estúdio',
-    title: ['Não é lava-rápido.', 'É engenharia de acabamento.'],
+    eyebrow: 'A Lustroprime',
+    title: ['Cuidado de detalhe', 'em Santo Amaro'],
     text: [
-      'Cada carro entra no estúdio para um diagnóstico de pintura com medidor de espessura e iluminação de inspeção. Só depois disso definimos o tratamento — nunca um pacote genérico.',
-      'Trabalhamos com poucos carros por dia, em ambiente fechado e climatizado, para que cada etapa tenha o tempo de cura que o produto exige.',
+      'A Lustroprime Estética Automotiva fica na R. Carlos Gomes, 678, em Santo Amaro, e cuida do seu carro por fora e por dentro.',
+      '[A CONFIRMAR] Um parágrafo curto sobre a empresa: desde quando atende, quem está à frente e como é o atendimento.',
     ],
-    image: u('1632823469850-2f77dd9c7f93'), // TROCAR FOTO
-    imageAlt: 'Profissional aplicando película de proteção PPF no farol de um Mercedes',
-    badge: { value: '8', label: 'anos tratando carros de alto padrão' },
+    image: foto('descontaminacao'),
+    imageAlt: 'Carro prata com a pintura limpa e brilhando depois da descontaminação',
+    badge: { value: '5,0', label: 'de nota no Google, com 60 avaliações' },
     techniques: [
-      'Medição de camada de verniz em cada painel',
-      'Polimento técnico em até 3 etapas',
-      'Coatings cerâmicos 9H de linha profissional',
-      'PPF auto-regenerativo com corte computadorizado',
+      'Lavagem, polimento, vitrificação e enceramento',
+      'Higienização interna e hidratação de banco de couro',
+      'Polimento de farol e de peça repintada',
+      'Insulfilm e recuperação de carro de enchente',
     ],
   },
 
   // ── 3. Serviços ───────────────────────────────────────────────────────────
-  // icon: ceramic | polish | ppf | wash | interior | wheel
+  // Ordem e nomes do catálogo do WhatsApp do cliente.
+  // icon: wash | ceramic | polish | headlight | spray | interior | engine | flood | tint | wax | wheel
   services: [
-    {
-      icon: 'ceramic',
-      name: 'Vitrificação Cerâmica',
-      text: 'Camada cerâmica de alta dureza que protege contra UV, chuva ácida e contaminantes — com brilho profundo por anos.',
-      tag: 'Até 5 anos',
-    },
-    {
-      icon: 'polish',
-      name: 'Polimento Técnico',
-      text: 'Correção de riscos, hologramas e oxidação em etapas, preservando o verniz original medido painel a painel.',
-      tag: 'Correção de pintura',
-    },
-    {
-      icon: 'ppf',
-      name: 'PPF — Proteção de Pintura',
-      text: 'Película transparente auto-regenerativa contra pedras, riscos e pequenas batidas. Invisível e removível.',
-      tag: 'Película premium',
-    },
-    {
-      icon: 'wash',
-      name: 'Lavagem Detalhada',
-      text: 'Método de dois baldes, pré-lavagem em espuma e descontaminação. Zero micro-riscos, cada detalhe à mão.',
-      tag: 'Manutenção',
-    },
-    {
-      icon: 'interior',
-      name: 'Higienização Interna',
-      text: 'Extração profunda de bancos e carpetes, hidratação de couro e sanitização do ar-condicionado.',
-      tag: 'Couro & tecidos',
-    },
-    {
-      icon: 'wheel',
-      name: 'Estética de Rodas',
-      text: 'Descontaminação de ferrugem de freio, vitrificação de rodas e pinças para limpeza fácil e brilho duradouro.',
-      tag: 'Rodas & pinças',
-    },
+    { icon: 'wash', name: 'Lavagem completa', text: 'Por fora e por dentro, com atenção a cada canto do carro.' },
+    { icon: 'ceramic', name: 'Polimento e vitrificação', text: 'Devolve o brilho da pintura e deixa uma camada que ajuda a proteger.' },
+    { icon: 'polish', name: 'Polimento de peça repintada', text: 'Deixa a peça que foi pintada de novo com o mesmo brilho do resto do carro.' },
+    { icon: 'headlight', name: 'Polimento de farol', text: 'Tira o aspecto amarelado e opaco do farol.' },
+    { icon: 'spray', name: 'Higienização interna', text: 'Limpeza profunda de bancos, carpetes e de todo o interior.' },
+    { icon: 'interior', name: 'Limpeza e hidratação de banco de couro', text: 'Limpa e hidrata o couro para ele ficar macio e bonito.' },
+    { icon: 'engine', name: 'Lavagem de motor', text: 'Tira a sujeira e a gordura acumuladas no motor.' },
+    { icon: 'flood', name: 'Recuperação de carro de enchente', text: 'Desmontamos, limpamos e secamos o interior do carro que pegou água.' },
+    { icon: 'tint', name: 'Insulfilm', text: 'Película nos vidros para mais conforto e privacidade.' },
+    { icon: 'wax', name: 'Enceramento', text: 'Brilho e proteção rápida para a pintura.' },
   ],
 
   // ── 4. Antes e Depois ─────────────────────────────────────────────────────
-  // TROCAR FOTOS: use pares reais do cliente (before/after com o MESMO enquadramento).
-  // Enquanto não houver, `simulateBefore: true` gera o "antes" aplicando um filtro
-  // de pintura opaca/sem brilho sobre a mesma foto (apenas para demonstração).
+  // Fotos reais do cliente. Três formatos:
+  //  • before + after com o MESMO enquadramento → divisória arrastável
+  //  • before + after com sideBySide: true → as duas fotos lado a lado (ângulos diferentes)
+  //  • single → uma foto que já mostra o antes e o depois na mesma imagem
   beforeAfter: [
     {
-      label: 'Polimento + Vitrificação',
-      car: 'Mercedes-AMG GT',
-      after: u('1618843479313-40f8afb4b4d8'),
-      before: null,
-      simulateBefore: true,
+      label: 'Polimento e vitrificação',
+      car: 'Chery Tiggo 7 Pro',
+      before: foto('tiggo-before'),
+      after: foto('tiggo-after'),
+      sideBySide: true,
     },
     {
-      label: 'Correção de pintura',
-      car: 'Porsche Panamera',
-      after: u('1503376780353-7e6692767b70'),
-      before: null,
-      simulateBefore: true,
+      label: 'Recuperação de enchente',
+      car: 'Interior desmontado e limpo',
+      before: foto('flood-before'),
+      after: foto('flood-during'),
+      afterLabel: 'Em andamento',
+      sideBySide: true,
     },
     {
-      label: 'Detalhamento completo',
-      car: 'Chevrolet Camaro',
-      after: u('1492144534655-ae79c964c9d7'),
-      before: null,
-      simulateBefore: true,
+      label: 'Polimento de peça repintada',
+      car: 'Mesmo capô, duas metades',
+      single: foto('repintada'),
+      caption: 'Uma metade polida e a outra ainda não: olha a diferença.',
     },
   ],
 
   // ── 5. Por que nos escolher ───────────────────────────────────────────────
-  // icon: warranty | imported | certified | calendar
+  // Só fatos confirmados. icon: qualquer nome de components/ui/Icon.jsx
   whyUs: [
-    { icon: 'warranty', title: 'Garantia por escrito', text: 'Certificado com prazo e cobertura de cada tratamento.' },
-    { icon: 'imported', title: 'Produtos importados', text: 'Linhas profissionais, as mesmas usadas nos melhores estúdios do mundo.' },
-    { icon: 'certified', title: 'Equipe certificada', text: 'Aplicadores treinados e certificados pelos fabricantes.' },
-    { icon: 'calendar', title: 'Atendimento agendado', text: 'Sem fila e sem pressa: seu carro tem hora marcada e dedicação total.' },
+    { icon: 'star', title: 'Nota 5,0 no Google', text: 'Média de 60 avaliações de clientes no Google.' },
+    { icon: 'calendar', title: 'Aberto todos os dias', text: 'Das 9h às 19h. [A CONFIRMAR os dias]' },
+    { icon: 'whatsapp', title: 'Orçamento no WhatsApp', text: 'Mande o modelo do carro e o serviço que você quer.' },
+    { icon: 'pin', title: 'Em Santo Amaro', text: 'R. Carlos Gomes, 678, São Paulo/SP.' },
   ],
 
   // ── 6. Depoimentos ────────────────────────────────────────────────────────
-  // TROCAR: use avaliações reais do Google do cliente (com autorização)
-  testimonials: [
-    {
-      name: 'Rafael M.',
-      car: 'BMW M4',
-      text: 'Levei o carro com a pintura cheia de hologramas de lava-rápido. Voltou melhor do que saiu da concessionária. O relatório com fotos de cada etapa fez toda a diferença.',
-    },
-    {
-      name: 'Carolina S.',
-      car: 'Porsche Macan',
-      text: 'Fiz PPF na frente inteira e vitrificação. Atendimento impecável do orçamento à entrega, e a garantia por escrito me deu muita segurança.',
-    },
-    {
-      name: 'Eduardo L.',
-      car: 'Audi RS5',
-      text: 'Já passei por vários estúdios em São Paulo. Aqui é outro nível de cuidado: explicam tudo, cumprem prazo e o acabamento é absurdo.',
-    },
-    {
-      name: 'Juliana P.',
-      car: 'Volvo XC60',
-      text: 'A higienização interna tirou manchas que eu achava impossíveis. Carro com cheiro de novo e bancos de couro hidratados. Recomendo demais.',
-    },
-  ],
+  // [A CONFIRMAR] só avaliações reais do Google, com autorização. Lista vazia esconde a seção.
+  testimonials: [],
 
   // ── 7. Prova social ───────────────────────────────────────────────────────
-  // TROCAR números. decimals: casas decimais; suffix/prefix aparecem ao lado
+  // decimals: casas decimais; suffix/prefix aparecem ao lado
   stats: [
-    { value: 500, prefix: '+', label: 'veículos atendidos' },
-    { value: 8, label: 'anos de mercado' },
-    { value: 4.9, decimals: 1, suffix: '★', label: 'no Google' },
-    { value: 97, suffix: '%', label: 'dos clientes voltam' },
+    { value: 5, decimals: 1, suffix: '★', label: 'nota no Google' },
+    { value: 60, label: 'avaliações no Google' },
+    { value: 10, label: 'serviços' },
   ],
-  google: { rating: 4.9, count: 186 }, // TROCAR: nota e nº de avaliações reais
+  statsImage: foto('tiggo-after'), // fundo da faixa (fica bem escurecido)
+  google: { rating: 5, count: 60 },
 
   // ── 8. Pacotes ────────────────────────────────────────────────────────────
-  packages: [
-    {
-      name: 'Essencial',
-      pitch: 'Para manter o carro impecável no dia a dia.',
-      items: ['Lavagem detalhada', 'Descontaminação de pintura', 'Selante de proteção (6 meses)', 'Limpeza interna completa'],
-    },
-    {
-      name: 'Premium',
-      pitch: 'Correção e proteção de longo prazo.',
-      featured: true, // destaque visual ("Mais escolhido")
-      items: [
-        'Tudo do Essencial',
-        'Polimento técnico em 2 etapas',
-        'Vitrificação cerâmica (3 anos)',
-        'Vitrificação de rodas e vidros',
-        'Hidratação de couro',
-      ],
-    },
-    {
-      name: 'Blindagem Total',
-      pitch: 'Proteção máxima para quem não abre mão.',
-      items: [
-        'Tudo do Premium',
-        'PPF na frente completa',
-        'Vitrificação cerâmica (5 anos)',
-        'Higienização interna profunda',
-        'Revisão anual de garantia',
-      ],
-    },
-  ],
+  // [A CONFIRMAR] o catálogo do cliente não tem pacotes. Lista vazia esconde a seção.
+  packages: [],
 
   // ── 9. CTA final ──────────────────────────────────────────────────────────
   finalCta: {
-    title: ['Agende a avaliação', 'do seu carro.'],
-    text: 'Diagnóstico de pintura gratuito e orçamento personalizado em até 24h. Vagas limitadas por semana.',
-    button: 'Agendar pelo WhatsApp',
-    image: u('1617814076367-b759c7d7e738'), // TROCAR FOTO
+    eyebrow: 'Orçamento pelo WhatsApp',
+    title: ['Peça seu', 'orçamento.'],
+    text: 'Mande o modelo do seu carro e o serviço que você quer pelo WhatsApp (11) 97847-9285.',
+    button: 'Pedir orçamento no WhatsApp',
+    image: foto('repintada'),
   },
 }

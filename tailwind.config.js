@@ -4,11 +4,12 @@
 // PALETA — os valores reais ficam em src/index.css (:root), como canais RGB.
 // Para outro cliente, troque só as variáveis --c-* lá; nada aqui precisa mudar.
 //
-//   ink       #0A0A0A  fundo principal (preto profundo)
-//   ink-900   #0F0F10  seções alternadas
-//   graphite  #2A2A2E  cards / superfícies
-//   steel     #3A3A3D  bordas, divisores, superfícies elevadas
-//   accent    #E10600  destaque (CTAs, ícones, linhas, glow) — usar com moderação
+//   ink       #0D0D0D  fundo principal (preto do logo)
+//   ink-900   #121212  seções alternadas
+//   graphite  #282826  cards / superfícies
+//   steel     #3A3A37  bordas, divisores, superfícies elevadas
+//   accent    #F5C518  destaque amarelo-ouro (CTAs, ícones, linhas, glow) — usar com moderação
+//   on-accent #0D0D0D  texto sobre o destaque
 //   bone      #F2F2F2  texto principal (nunca branco puro)
 //   mist      #A6A6AB  texto secundário
 //   smoke     #6E6E73  texto terciário / legendas
@@ -24,6 +25,7 @@ export default {
         graphite: rgb('--c-graphite'),
         steel: rgb('--c-steel'),
         accent: { DEFAULT: rgb('--c-accent'), deep: rgb('--c-accent-deep'), soft: rgb('--c-accent-soft') },
+        'on-accent': rgb('--c-on-accent'),
         bone: rgb('--c-bone'),
         mist: rgb('--c-mist'),
         smoke: rgb('--c-smoke'),

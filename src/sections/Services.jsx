@@ -13,22 +13,22 @@ function trackPointer(e) {
   e.currentTarget.style.setProperty('--y', `${e.clientY - r.top}px`)
 }
 
-function ServiceCard({ service, index }) {
+function ServiceCard({ service, index, className = '' }) {
   return (
     <m.article
       variants={fadeUp}
       whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 260, damping: 24 }}
       onPointerMove={trackPointer}
-      className="group relative h-full"
+      className={`group relative h-full ${className}`}
     >
       <a
-        href={whatsappUrl(`Olá! Tenho interesse em ${service.name}. Pode me passar mais informações?`)}
+        href={whatsappUrl(`Olá! Vi o site e quero um orçamento de ${service.name}.`)}
         target="_blank"
         rel="noopener noreferrer"
         className="shine edge relative flex h-full flex-col overflow-hidden rounded-[1.4rem] bg-gradient-to-b from-graphite/70 to-ink-900 p-7 transition-[border-color,box-shadow] duration-500 ease-silk hover:border-accent/40 hover:shadow-glow-card sm:p-8"
       >
-        {/* Spotlight vermelho que segue o cursor */}
+        {/* Spotlight na cor de destaque que segue o cursor */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -44,14 +44,13 @@ function ServiceCard({ service, index }) {
           </span>
         </div>
 
-        <h3 className="relative mt-10 font-display text-display-sm uppercase text-bone">{service.name}</h3>
+        <h3 className="relative mt-8 font-display text-display-sm uppercase text-bone">{service.name}</h3>
         <p className="relative mt-4 flex-1 text-small text-mist">{service.text}</p>
 
-        <div className="relative mt-8 flex items-center justify-between border-t border-bone/[0.07] pt-5">
-          <span className="text-micro font-semibold uppercase tracking-[0.2em] text-smoke">{service.tag}</span>
-          <span className="flex items-center gap-2 text-micro font-semibold uppercase tracking-[0.2em] text-bone/60 transition-colors duration-300 group-hover:text-accent">
-            Orçar
-            <Icon name="arrowRight" size={16} stroke={1.5} className="transition-transform duration-500 ease-silk group-hover:translate-x-1" />
+        <div className="relative mt-8 border-t border-bone/[0.07] pt-5">
+          <span className="inline-flex h-11 items-center gap-2 rounded-full border border-accent/50 px-5 text-micro font-semibold uppercase tracking-[0.16em] text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-on-accent">
+            <Icon name="whatsapp" size={16} stroke={1.5} />
+            Pedir orçamento
           </span>
         </div>
       </a>
@@ -64,15 +63,14 @@ export default function Services() {
     <section id="servicos" className="relative bg-gradient-to-b from-ink via-ink-900 to-ink py-24 sm:py-32 lg:py-40">
       <div className="shell">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow="Serviços" title={['Tratamentos', 'de alto padrão']} accentLast />
-          <p className="max-w-sm text-body text-mist lg:pb-3">
-            Cada serviço começa com diagnóstico de pintura e termina com relatório de entrega. Toque em um card para pedir orçamento.
-          </p>
+          <SectionHeading eyebrow="Serviços" title={['O que a gente', 'faz pelo seu carro']} accentLast />
+          <p className="max-w-sm text-body text-mist lg:pb-3">Toque em um serviço para pedir orçamento pelo WhatsApp, já com o nome do serviço na mensagem.</p>
         </div>
 
         <RevealGroup step={0.08} className="mt-16 grid gap-5 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-6">
-          {brand.services.map((s, i) => (
-            <ServiceCard key={s.name} service={s} index={i} />
+          {brand.services.map((s, i, all) => (
+            // Último card sozinho na linha fica centralizado no desktop
+            <ServiceCard key={s.name} service={s} index={i} className={i === all.length - 1 && all.length % 3 === 1 ? 'lg:col-start-2' : ''} />
           ))}
         </RevealGroup>
       </div>

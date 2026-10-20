@@ -13,9 +13,11 @@ import Services from './sections/Services'
 import Stats from './sections/Stats'
 import Testimonials from './sections/Testimonials'
 import WhyUs from './sections/WhyUs'
+import { brand } from './config/brand'
 
 // Ordem das seções. Para remover uma seção num cliente, basta tirar a linha
-// (e o item correspondente em components/layout/ScrollChrome.jsx).
+// (a navegação lateral em ScrollChrome ignora seções que não estão na página).
+// Depoimentos e Pacotes somem sozinhos quando a lista em brand.js está vazia.
 export default function App() {
   return (
     // LazyMotion + domAnimation: carrega só o necessário do Framer Motion (bundle menor)
@@ -25,13 +27,13 @@ export default function App() {
         <ScrollChrome />
         <main>
           <Hero />
-          <About />
-          <Services />
           <BeforeAfter />
+          <Services />
+          <About />
           <WhyUs />
-          <Testimonials />
+          {brand.testimonials.length > 0 && <Testimonials />}
           <Stats />
-          <Packages />
+          {brand.packages.length > 0 && <Packages />}
           <FinalCta />
           <Location />
         </main>

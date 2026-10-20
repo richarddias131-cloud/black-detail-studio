@@ -48,13 +48,13 @@ export default function About() {
             <span className="text-small font-medium leading-snug text-bone/85">{about.badge.label}</span>
           </Reveal>
 
-          {/* Marca d'água do ano de fundação */}
-          <span
+          {/* Marca d'água do ano de fundação (some se brand.since for null) */}
+          {brand.since && <span
             aria-hidden="true"
             className="pointer-events-none absolute -left-4 -top-10 select-none font-display text-[5.5rem] leading-none text-bone/[0.04] sm:-left-8 sm:text-[8rem]"
           >
             {brand.since}
-          </span>
+          </span>}
         </m.div>
 
         {/* ── Texto ────────────────────────────────────────────────────────── */}

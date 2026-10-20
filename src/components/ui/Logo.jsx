@@ -3,7 +3,8 @@ import { brand } from '../../config/brand'
 // Logotipo. Se brand.logo estiver definido, usa a imagem; senão monta o logotipo em texto.
 export default function Logo({ className = '', size = 'md' }) {
   if (brand.logo) {
-    return <img src={brand.logo} alt={`${brand.name} ${brand.nameSuffix}`.trim()} className={`h-9 w-auto ${className}`} />
+    const [w, h] = brand.logoSize ?? []
+    return <img src={brand.logo} alt={`${brand.name} ${brand.nameSuffix}`.trim()} width={w} height={h} className={`h-12 w-auto sm:h-14 ${className}`} />
   }
   const text = size === 'lg' ? 'text-[2rem]' : 'text-[1.4rem]'
   return (

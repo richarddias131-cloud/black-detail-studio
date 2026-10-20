@@ -1,10 +1,10 @@
 import Icon from './Icon'
 
 // Botões com shine sweep no hover.
-// variant: 'primary' (vermelho, glow pulsante) | 'ghost' (contorno) | 'dark'
+// variant: 'primary' (cor de destaque, glow pulsante) | 'ghost' (contorno) | 'dark'
 const VARIANTS = {
   primary:
-    'glow-pulse bg-accent text-bone hover:bg-accent-soft hover:shadow-glow active:bg-accent-deep',
+    'glow-pulse bg-accent text-on-accent hover:bg-accent-soft hover:shadow-glow active:bg-accent-deep',
   ghost:
     'border border-bone/20 bg-bone/[0.03] text-bone backdrop-blur-sm hover:border-bone/45 hover:bg-bone/[0.07]',
   dark: 'border border-bone/10 bg-graphite text-bone hover:border-accent/60 hover:shadow-glow-sm',

@@ -7,13 +7,14 @@
    Ex.: para um cliente com destaque dourado → --c-accent: 201 162 39;
    ───────────────────────────────────────────────────────────────────────────── */
 :root {
-  --c-ink: 10 10 10;          /* #0A0A0A */
-  --c-ink-900: 15 15 16;      /* #0F0F10 */
-  --c-graphite: 42 42 46;     /* #2A2A2E */
-  --c-steel: 58 58 61;        /* #3A3A3D */
-  --c-accent: 225 6 0;        /* #E10600 */
-  --c-accent-deep: 150 4 0;   /* #960400 */
-  --c-accent-soft: 255 59 48; /* #FF3B30 */
+  --c-ink: 13 13 13;          /* #0D0D0D — preto do logo */
+  --c-ink-900: 18 18 18;      /* #121212 */
+  --c-graphite: 40 40 38;     /* #282826 */
+  --c-steel: 58 58 55;        /* #3A3A37 */
+  --c-accent: 245 197 24;     /* #F5C518 — amarelo do logo (marca: preto e amarelo) */
+  --c-accent-deep: 196 152 8; /* #C49808 */
+  --c-accent-soft: 255 217 77;/* #FFD94D */
+  --c-on-accent: 13 13 13;    /* texto sobre a cor de destaque (amarelo pede texto escuro) */
   --c-bone: 242 242 242;      /* #F2F2F2 — nunca usar #FFF no texto */
   --c-mist: 166 166 171;      /* #A6A6AB */
   --c-smoke: 110 110 115;     /* #6E6E73 */
@@ -34,7 +35,7 @@
   }
   ::selection {
     background: rgb(var(--c-accent) / 0.85);
-    color: rgb(var(--c-bone));
+    color: rgb(var(--c-on-accent));
   }
   section[id] {
     scroll-margin-top: 0;
@@ -59,7 +60,7 @@
     @apply font-sans text-eyebrow font-semibold uppercase tracking-[0.2em] text-mist sm:tracking-[0.32em];
   }
 
-  /* Hairline vermelha usada ao lado dos eyebrows e divisores */
+  /* Hairline na cor de destaque usada ao lado dos eyebrows e divisores */
   .rule-accent {
     @apply inline-block h-px w-10 bg-accent align-middle;
     box-shadow: 0 0 12px rgb(var(--c-accent) / 0.8);
